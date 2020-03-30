@@ -10,10 +10,10 @@
 ## called with subsetting ($). This list is the output of makeCacheMatrix.
 
 makeCacheMatrix <- function(x = matrix()) {
-        i <- matrix(NULL)
+        i <- matrix(NA)
         set <- function(y) {
                 x <<- y
-                i <<- matrix(NULL)
+                i <<- matrix(NA)
         }
         get <- function() x
         setinv <- function(solve) i <<- solve
@@ -35,7 +35,7 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
         i <- x$getinv()
-        if(is.null(i[1,1])==FALSE) {
+        if(is.na(i[1,1])==FALSE) {
                 message("getting cached data")
                 return(i)
         }
